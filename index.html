@@ -104,6 +104,49 @@
     transition: all 0.3s;
   }
 
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ─── LANG TOGGLE ─── */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    padding: 2px;
+  }
+  .lang-toggle button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.45);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .lang-toggle button.active {
+    background: var(--white);
+    color: var(--navy);
+  }
+  .lang-toggle button:hover:not(.active) {
+    color: rgba(255,255,255,0.8);
+  }
+  .lang-toggle-mobile {
+    display: flex;
+    justify-content: center;
+    padding-top: 16px;
+    margin-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
   /* ─── HERO ─── */
   .hero {
     position: relative;
@@ -896,23 +939,35 @@
     <img src="img/logo.png" alt="La Mar Salá">
   </a>
   <ul class="nav-links">
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#carta">Carta</a></li>
-    <li><a href="#galeria">Galería</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-    <li><a href="#contacto" class="nav-cta">Reservar</a></li>
+    <li><a href="#nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
+    <li><a href="#carta" data-i18n="nav.carta">Carta</a></li>
+    <li><a href="#galeria" data-i18n="nav.galeria">Galería</a></li>
+    <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
+    <li><a href="#contacto" class="nav-cta" data-i18n="nav.reservar">Reservar</a></li>
   </ul>
-  <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button data-lang="es" class="active" onclick="setLang('es')">ES</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
-  <a href="#nosotros" onclick="closeMobileNav()">Nosotros</a>
-  <a href="#carta" onclick="closeMobileNav()">Carta</a>
-  <a href="#galeria" onclick="closeMobileNav()">Galería</a>
-  <a href="#contacto" onclick="closeMobileNav()">Contacto</a>
-  <a href="#contacto" onclick="closeMobileNav()" style="color:var(--gold-lt);">Reservar mesa</a>
+  <a href="#nosotros" onclick="closeMobileNav()" data-i18n="nav.nosotros">Nosotros</a>
+  <a href="#carta" onclick="closeMobileNav()" data-i18n="nav.carta">Carta</a>
+  <a href="#galeria" onclick="closeMobileNav()" data-i18n="nav.galeria">Galería</a>
+  <a href="#contacto" onclick="closeMobileNav()" data-i18n="nav.contacto">Contacto</a>
+  <a href="#contacto" onclick="closeMobileNav()" style="color:var(--gold-lt);" data-i18n="nav.reservar.mobile">Reservar mesa</a>
+  <div class="lang-toggle-mobile">
+    <div class="lang-toggle">
+      <button data-lang="es" class="active" onclick="setLang('es')">ES</button>
+      <button data-lang="en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
 </div>
 
 <!-- HERO -->
@@ -921,13 +976,13 @@
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <img src="img/logo.png" alt="La Mar Salá" class="hero-logo">
-    <p class="hero-tagline">Cocina mediterránea al borde del mar</p>
+    <p class="hero-tagline" data-i18n="hero.tagline">Cocina mediterránea al borde del mar</p>
     <div class="hero-divider"></div>
     <p class="hero-location">Los Arenales del Sol · Alicante</p>
-    <a href="#carta" class="hero-btn">Explorar la carta</a>
+    <a href="#carta" class="hero-btn" data-i18n="hero.btn">Explorar la carta</a>
   </div>
   <div class="hero-scroll">
-    <span>Descubrir</span>
+    <span data-i18n="hero.scroll">Descubrir</span>
     <div class="scroll-line"></div>
   </div>
 </section>
@@ -936,22 +991,22 @@
 <div class="strip">
   <div class="strip-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-    Cocina mediterránea auténtica
+    <span data-i18n="strip.1">Cocina mediterránea auténtica</span>
   </div>
   <div class="strip-sep"></div>
   <div class="strip-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-    Primera línea de playa
+    <span data-i18n="strip.2">Primera línea de playa</span>
   </div>
   <div class="strip-sep"></div>
   <div class="strip-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-    Abierto todos los días
+    <span data-i18n="strip.3">Abierto todos los días</span>
   </div>
   <div class="strip-sep"></div>
   <div class="strip-item">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-    Excelente relación calidad-precio
+    <span data-i18n="strip.4">Excelente relación calidad-precio</span>
   </div>
 </div>
 
@@ -960,15 +1015,15 @@
   <div class="container">
     <div class="about-inner">
       <div class="about-text">
-        <span class="section-label reveal">Nuestra historia</span>
-        <h2 class="section-title reveal reveal-d1">Donde el <em>mar</em><br>llega a tu mesa</h2>
-        <p class="section-body reveal reveal-d2">En La Mar Salá, el Mediterráneo no es solo el paisaje que te rodea — es el protagonista de cada plato. Situados en primera línea de playa en Los Arenales del Sol, elaboramos una cocina mediterránea honesta, con producto fresco de temporada y una carta que celebra los sabores del mar y la tierra alicantina.</p>
-        <p class="section-body reveal reveal-d3">Desde nuestros arroces melosos hasta las tapas de siempre, cada receta lleva el cariño de una cocina de proximidad, con ingredientes seleccionados y el ambiente inconfundible de comer junto al mar.</p>
+        <span class="section-label reveal" data-i18n="about.label">Nuestra historia</span>
+        <h2 class="section-title reveal reveal-d1" data-i18n="about.title">Donde el <em>mar</em><br>llega a tu mesa</h2>
+        <p class="section-body reveal reveal-d2" data-i18n="about.p1">En La Mar Salá, el Mediterráneo no es solo el paisaje que te rodea — es el protagonista de cada plato. Situados en primera línea de playa en Los Arenales del Sol, elaboramos una cocina mediterránea honesta, con producto fresco de temporada y una carta que celebra los sabores del mar y la tierra alicantina.</p>
+        <p class="section-body reveal reveal-d3" data-i18n="about.p2">Desde nuestros arroces melosos hasta las tapas de siempre, cada receta lleva el cariño de una cocina de proximidad, con ingredientes seleccionados y el ambiente inconfundible de comer junto al mar.</p>
         <div class="about-pills reveal reveal-d4">
-          <span class="pill">Producto fresco</span>
-          <span class="pill">Cocina mediterránea</span>
-          <span class="pill">Primera línea de playa</span>
-          <span class="pill">Ambiente familiar</span>
+          <span class="pill" data-i18n="about.pill1">Producto fresco</span>
+          <span class="pill" data-i18n="about.pill2">Cocina mediterránea</span>
+          <span class="pill" data-i18n="about.pill3">Primera línea de playa</span>
+          <span class="pill" data-i18n="about.pill4">Ambiente familiar</span>
         </div>
       </div>
       <div class="about-img-wrap reveal reveal-d2">
@@ -983,8 +1038,8 @@
 <section class="specialties" id="especialidades">
   <div class="container">
     <div class="spec-header">
-      <span class="section-label reveal">Lo que nos define</span>
-      <h2 class="section-title reveal reveal-d1">Nuestras especialidades</h2>
+      <span class="section-label reveal" data-i18n="spec.label">Lo que nos define</span>
+      <h2 class="section-title reveal reveal-d1" data-i18n="spec.title">Nuestras especialidades</h2>
     </div>
     <div class="spec-grid">
       <div class="spec-card reveal">
@@ -993,8 +1048,8 @@
         </div>
         <div class="spec-card-body">
           <div class="spec-card-icon">🦪</div>
-          <h3 class="spec-card-title">Mariscos y Pescados</h3>
-          <p class="spec-card-desc">Del mar a la mesa en cuestión de horas. Mejillones, sepia, gambas y el pescado del día preparados con la sencillez que el buen producto merece.</p>
+          <h3 class="spec-card-title" data-i18n="spec.1.title">Mariscos y Pescados</h3>
+          <p class="spec-card-desc" data-i18n="spec.1.desc">Del mar a la mesa en cuestión de horas. Mejillones, sepia, gambas y el pescado del día preparados con la sencillez que el buen producto merece.</p>
         </div>
       </div>
       <div class="spec-card reveal reveal-d1">
@@ -1003,8 +1058,8 @@
         </div>
         <div class="spec-card-body">
           <div class="spec-card-icon">🥘</div>
-          <h3 class="spec-card-title">Arroces Mediterráneos</h3>
-          <p class="spec-card-desc">El alma de la cocina levantina. Arroces caldosos, melosos y a banda elaborados con el caldo de siempre, lentos y con todo el sabor del Mediterráneo.</p>
+          <h3 class="spec-card-title" data-i18n="spec.2.title">Arroces Mediterráneos</h3>
+          <p class="spec-card-desc" data-i18n="spec.2.desc">El alma de la cocina levantina. Arroces caldosos, melosos y a banda elaborados con el caldo de siempre, lentos y con todo el sabor del Mediterráneo.</p>
         </div>
       </div>
       <div class="spec-card reveal reveal-d2">
@@ -1013,8 +1068,8 @@
         </div>
         <div class="spec-card-body">
           <div class="spec-card-icon">🍢</div>
-          <h3 class="spec-card-title">Tapas y Carnes</h3>
-          <p class="spec-card-desc">Para quienes prefieren picar y compartir. Tapas caseras, carnes a la brasa y guarniciones que acompañan cualquier plan, ya sea cena romántica o celebración en grupo.</p>
+          <h3 class="spec-card-title" data-i18n="spec.3.title">Tapas y Carnes</h3>
+          <p class="spec-card-desc" data-i18n="spec.3.desc">Para quienes prefieren picar y compartir. Tapas caseras, carnes a la brasa y guarniciones que acompañan cualquier plan, ya sea cena romántica o celebración en grupo.</p>
         </div>
       </div>
     </div>
@@ -1025,57 +1080,57 @@
 <section class="menu-section" id="carta">
   <div class="container">
     <div class="menu-header">
-      <span class="section-label reveal">Lo mejor de la casa</span>
-      <h2 class="section-title reveal reveal-d1">Nuestra <em>carta</em></h2>
+      <span class="section-label reveal" data-i18n="menu.label">Lo mejor de la casa</span>
+      <h2 class="section-title reveal reveal-d1" data-i18n="menu.title">Nuestra <em>carta</em></h2>
     </div>
     <div class="menu-tabs">
-      <button class="tab-btn active" onclick="switchTab('entrantes')">Entrantes</button>
-      <button class="tab-btn" onclick="switchTab('arroces')">Arroces</button>
-      <button class="tab-btn" onclick="switchTab('principales')">Principales</button>
-      <button class="tab-btn" onclick="switchTab('postres')">Postres</button>
+      <button class="tab-btn active" data-tab="entrantes" onclick="switchTab('entrantes')" data-i18n="menu.tab.entrantes">Entrantes</button>
+      <button class="tab-btn" data-tab="arroces" onclick="switchTab('arroces')" data-i18n="menu.tab.arroces">Arroces</button>
+      <button class="tab-btn" data-tab="principales" onclick="switchTab('principales')" data-i18n="menu.tab.principales">Principales</button>
+      <button class="tab-btn" data-tab="postres" onclick="switchTab('postres')" data-i18n="menu.tab.postres">Postres</button>
     </div>
 
     <div class="menu-panel active" id="tab-entrantes">
       <div class="menu-grid">
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Mejillones al vapor</div>
-            <div class="menu-item-desc">Con limón fresco, raciones generosas</div>
+            <div class="menu-item-name" data-i18n="menu.e1.name">Mejillones al vapor</div>
+            <div class="menu-item-desc" data-i18n="menu.e1.desc">Con limón fresco, raciones generosas</div>
           </div>
           <div class="menu-item-price">8 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Gambas al ajillo</div>
-            <div class="menu-item-desc">Gambas del Mediterráneo, aceite, ajo y guindilla</div>
+            <div class="menu-item-name" data-i18n="menu.e2.name">Gambas al ajillo</div>
+            <div class="menu-item-desc" data-i18n="menu.e2.desc">Gambas del Mediterráneo, aceite, ajo y guindilla</div>
           </div>
           <div class="menu-item-price">12 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Sepia a la plancha</div>
-            <div class="menu-item-desc">Con alioli casero y patatas fritas</div>
+            <div class="menu-item-name" data-i18n="menu.e3.name">Sepia a la plancha</div>
+            <div class="menu-item-desc" data-i18n="menu.e3.desc">Con alioli casero y patatas fritas</div>
           </div>
           <div class="menu-item-price">11 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Croquetas caseras</div>
-            <div class="menu-item-desc">De jamón ibérico o bacalao (6 uds.)</div>
+            <div class="menu-item-name" data-i18n="menu.e4.name">Croquetas caseras</div>
+            <div class="menu-item-desc" data-i18n="menu.e4.desc">De jamón ibérico o bacalao (6 uds.)</div>
           </div>
           <div class="menu-item-price">7 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Ensalada de la casa</div>
-            <div class="menu-item-desc">Tomate, lechuga, cebolla, aceitunas y atún</div>
+            <div class="menu-item-name" data-i18n="menu.e5.name">Ensalada de la casa</div>
+            <div class="menu-item-desc" data-i18n="menu.e5.desc">Tomate, lechuga, cebolla, aceitunas y atún</div>
           </div>
           <div class="menu-item-price">6 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Pulpo a la brasa</div>
-            <div class="menu-item-desc">Con pimentón de la Vera y aceite de oliva virgen</div>
+            <div class="menu-item-name" data-i18n="menu.e6.name">Pulpo a la brasa</div>
+            <div class="menu-item-desc" data-i18n="menu.e6.desc">Con pimentón de la Vera y aceite de oliva virgen</div>
           </div>
           <div class="menu-item-price">15 €</div>
         </div>
@@ -1086,43 +1141,43 @@
       <div class="menu-grid">
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Arroz a banda</div>
-            <div class="menu-item-desc">El clásico alicantino, con alioli y pescado aparte</div>
+            <div class="menu-item-name" data-i18n="menu.a1.name">Arroz a banda</div>
+            <div class="menu-item-desc" data-i18n="menu.a1.desc">El clásico alicantino, con alioli y pescado aparte</div>
           </div>
           <div class="menu-item-price">14 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Arroz con bogavante</div>
-            <div class="menu-item-desc">Caldoso, con bogavante entero (mín. 2 personas)</div>
+            <div class="menu-item-name" data-i18n="menu.a2.name">Arroz con bogavante</div>
+            <div class="menu-item-desc" data-i18n="menu.a2.desc">Caldoso, con bogavante entero (mín. 2 personas)</div>
           </div>
           <div class="menu-item-price">28 €/p</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Arroz negro</div>
-            <div class="menu-item-desc">Con sepia y gambas, alioli tradicional</div>
+            <div class="menu-item-name" data-i18n="menu.a3.name">Arroz negro</div>
+            <div class="menu-item-desc" data-i18n="menu.a3.desc">Con sepia y gambas, alioli tradicional</div>
           </div>
           <div class="menu-item-price">14 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Arroz del senyoret</div>
-            <div class="menu-item-desc">Mariscos pelados, para comer sin complicaciones</div>
+            <div class="menu-item-name" data-i18n="menu.a4.name">Arroz del senyoret</div>
+            <div class="menu-item-desc" data-i18n="menu.a4.desc">Mariscos pelados, para comer sin complicaciones</div>
           </div>
           <div class="menu-item-price">16 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Arroz meloso de verduras</div>
-            <div class="menu-item-desc">Temporada, con aceite de trufa</div>
+            <div class="menu-item-name" data-i18n="menu.a5.name">Arroz meloso de verduras</div>
+            <div class="menu-item-desc" data-i18n="menu.a5.desc">Temporada, con aceite de trufa</div>
           </div>
           <div class="menu-item-price">12 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Paella valenciana</div>
-            <div class="menu-item-desc">Pollo, conejo y judía verde (mín. 2 personas)</div>
+            <div class="menu-item-name" data-i18n="menu.a6.name">Paella valenciana</div>
+            <div class="menu-item-desc" data-i18n="menu.a6.desc">Pollo, conejo y judía verde (mín. 2 personas)</div>
           </div>
           <div class="menu-item-price">13 €/p</div>
         </div>
@@ -1133,43 +1188,43 @@
       <div class="menu-grid">
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Dorada a la sal</div>
-            <div class="menu-item-desc">Entera, al horno tradicional, con verduras de temporada</div>
+            <div class="menu-item-name" data-i18n="menu.p1.name">Dorada a la sal</div>
+            <div class="menu-item-desc" data-i18n="menu.p1.desc">Entera, al horno tradicional, con verduras de temporada</div>
           </div>
           <div class="menu-item-price">18 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Lubina a la brasa</div>
-            <div class="menu-item-desc">Con guarnición de patata y ensalada</div>
+            <div class="menu-item-name" data-i18n="menu.p2.name">Lubina a la brasa</div>
+            <div class="menu-item-desc" data-i18n="menu.p2.desc">Con guarnición de patata y ensalada</div>
           </div>
           <div class="menu-item-price">20 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Entrecot a la brasa</div>
-            <div class="menu-item-desc">300g de ternera, con patatas fritas y pimientos</div>
+            <div class="menu-item-name" data-i18n="menu.p3.name">Entrecot a la brasa</div>
+            <div class="menu-item-desc" data-i18n="menu.p3.desc">300g de ternera, con patatas fritas y pimientos</div>
           </div>
           <div class="menu-item-price">19 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Bacalao al pil-pil</div>
-            <div class="menu-item-desc">Al estilo tradicional, con tomate confitado</div>
+            <div class="menu-item-name" data-i18n="menu.p4.name">Bacalao al pil-pil</div>
+            <div class="menu-item-desc" data-i18n="menu.p4.desc">Al estilo tradicional, con tomate confitado</div>
           </div>
           <div class="menu-item-price">17 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Chuletas de cordero</div>
-            <div class="menu-item-desc">A la brasa, con romesco y verduras asadas</div>
+            <div class="menu-item-name" data-i18n="menu.p5.name">Chuletas de cordero</div>
+            <div class="menu-item-desc" data-i18n="menu.p5.desc">A la brasa, con romesco y verduras asadas</div>
           </div>
           <div class="menu-item-price">16 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Solomillo al Pedro Ximénez</div>
-            <div class="menu-item-desc">Con reducción de vino dulce y patata rústica</div>
+            <div class="menu-item-name" data-i18n="menu.p6.name">Solomillo al Pedro Ximénez</div>
+            <div class="menu-item-desc" data-i18n="menu.p6.desc">Con reducción de vino dulce y patata rústica</div>
           </div>
           <div class="menu-item-price">22 €</div>
         </div>
@@ -1180,29 +1235,29 @@
       <div class="menu-grid">
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Tarta de queso artesana</div>
-            <div class="menu-item-desc">Con coulis de frutos rojos</div>
+            <div class="menu-item-name" data-i18n="menu.d1.name">Tarta de queso artesana</div>
+            <div class="menu-item-desc" data-i18n="menu.d1.desc">Con coulis de frutos rojos</div>
           </div>
           <div class="menu-item-price">5 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Crema catalana</div>
-            <div class="menu-item-desc">Receta tradicional, caramelizada al momento</div>
+            <div class="menu-item-name" data-i18n="menu.d2.name">Crema catalana</div>
+            <div class="menu-item-desc" data-i18n="menu.d2.desc">Receta tradicional, caramelizada al momento</div>
           </div>
           <div class="menu-item-price">4,50 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Helado artesano</div>
-            <div class="menu-item-desc">3 bolas a elegir, con galleta y nata</div>
+            <div class="menu-item-name" data-i18n="menu.d3.name">Helado artesano</div>
+            <div class="menu-item-desc" data-i18n="menu.d3.desc">3 bolas a elegir, con galleta y nata</div>
           </div>
           <div class="menu-item-price">4 €</div>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <div class="menu-item-name">Coulant de chocolate</div>
-            <div class="menu-item-desc">Con helado de vainilla y salsa de caramelo</div>
+            <div class="menu-item-name" data-i18n="menu.d4.name">Coulant de chocolate</div>
+            <div class="menu-item-desc" data-i18n="menu.d4.desc">Con helado de vainilla y salsa de caramelo</div>
           </div>
           <div class="menu-item-price">5,50 €</div>
         </div>
@@ -1215,8 +1270,8 @@
 <section class="gallery-section" id="galeria">
   <div class="container">
     <div class="gallery-header">
-      <span class="section-label reveal">El ambiente</span>
-      <h2 class="section-title reveal reveal-d1">Imágenes del <em style="color:var(--gold-lt)">restaurante</em></h2>
+      <span class="section-label reveal" data-i18n="gallery.label">El ambiente</span>
+      <h2 class="section-title reveal reveal-d1" data-i18n="gallery.title">Imágenes del <em style="color:var(--gold-lt)">restaurante</em></h2>
     </div>
   </div>
   <div style="max-width:1200px; margin:0 auto; padding:0 48px;">
@@ -1249,7 +1304,7 @@
     <div class="gallery-cta">
       <a href="https://www.facebook.com/LaMarSalaArenales/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        Ver más en Facebook
+        <span data-i18n="gallery.fb">Ver más en Facebook</span>
       </a>
       <a href="https://www.tripadvisor.es/Restaurant_Review-g8844182-d28087145-Reviews-La_Mar_Sala-Los_Arenales_del_Sol_Costa_Blanca_Province_of_Alicante_Valencian_Co.html" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -1267,29 +1322,29 @@
         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/74/9f/b6/caption.jpg?w=1200&h=-1&s=1" alt="Terraza La Mar Salá al borde del mar">
       </div>
       <div class="exp-text">
-        <span class="section-label reveal">La experiencia</span>
-        <h2 class="section-title reveal reveal-d1">Más que una <em>comida</em></h2>
-        <p class="section-body reveal reveal-d2">Comer en La Mar Salá es vivir la auténtica experiencia mediterránea. El rumor de las olas, la brisa del mar, el olor a salitre y una cocina que lo resume todo: producto, sabor y el placer de estar en el mejor sitio posible.</p>
+        <span class="section-label reveal" data-i18n="exp.label">La experiencia</span>
+        <h2 class="section-title reveal reveal-d1" data-i18n="exp.title">Más que una <em>comida</em></h2>
+        <p class="section-body reveal reveal-d2" data-i18n="exp.body">Comer en La Mar Salá es vivir la auténtica experiencia mediterránea. El rumor de las olas, la brisa del mar, el olor a salitre y una cocina que lo resume todo: producto, sabor y el placer de estar en el mejor sitio posible.</p>
         <div class="exp-features">
           <div class="exp-feature reveal reveal-d2">
             <div class="exp-feature-icon">🌊</div>
             <div class="exp-feature-text">
-              <h4>Terraza con vistas al mar</h4>
-              <p>Come con el Mediterráneo como telón de fondo. Mesas en primera línea de playa para los días de buen tiempo.</p>
+              <h4 data-i18n="exp.f1.title">Terraza con vistas al mar</h4>
+              <p data-i18n="exp.f1.desc">Come con el Mediterráneo como telón de fondo. Mesas en primera línea de playa para los días de buen tiempo.</p>
             </div>
           </div>
           <div class="exp-feature reveal reveal-d3">
             <div class="exp-feature-icon">👨‍🍳</div>
             <div class="exp-feature-text">
-              <h4>Cocina de mercado</h4>
-              <p>Carta viva que varía con la temporada. Lo que llega fresco esta mañana está en el plato esta tarde.</p>
+              <h4 data-i18n="exp.f2.title">Cocina de mercado</h4>
+              <p data-i18n="exp.f2.desc">Carta viva que varía con la temporada. Lo que llega fresco esta mañana está en el plato esta tarde.</p>
             </div>
           </div>
           <div class="exp-feature reveal reveal-d4">
             <div class="exp-feature-icon">🤝</div>
             <div class="exp-feature-text">
-              <h4>Trato cercano y familiar</h4>
-              <p>Un equipo amable que te atiende como en casa. Porque la hospitalidad también es parte del sabor.</p>
+              <h4 data-i18n="exp.f3.title">Trato cercano y familiar</h4>
+              <p data-i18n="exp.f3.desc">Un equipo amable que te atiende como en casa. Porque la hospitalidad también es parte del sabor.</p>
             </div>
           </div>
         </div>
@@ -1303,9 +1358,9 @@
   <div class="container">
     <div class="contact-inner">
       <div>
-        <span class="section-label reveal">Encuéntranos</span>
-        <h2 class="section-title reveal reveal-d1">Reserva tu <em>mesa</em></h2>
-        <p class="section-body reveal reveal-d2">Ven a disfrutar del mar, del sol y de la mejor cocina mediterránea de los Arenales. Te esperamos con los brazos abiertos — y la paella lista.</p>
+        <span class="section-label reveal" data-i18n="contact.label">Encuéntranos</span>
+        <h2 class="section-title reveal reveal-d1" data-i18n="contact.title">Reserva tu <em>mesa</em></h2>
+        <p class="section-body reveal reveal-d2" data-i18n="contact.body">Ven a disfrutar del mar, del sol y de la mejor cocina mediterránea de los Arenales. Te esperamos con los brazos abiertos — y la paella lista.</p>
 
         <div class="contact-details">
           <div class="contact-detail reveal reveal-d2">
@@ -1313,8 +1368,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><circle cx="12" cy="11" r="3"/></svg>
             </div>
             <div class="contact-detail-content">
-              <h4>Dirección</h4>
-              <p>Avenida San Bartolomé de Tirajana 1<br>03295 Los Arenales del Sol, Alicante</p>
+              <h4 data-i18n="contact.address.label">Dirección</h4>
+              <p data-i18n="contact.address.value">Avenida San Bartolomé de Tirajana 1<br>03295 Los Arenales del Sol, Alicante</p>
             </div>
           </div>
           <div class="contact-detail reveal reveal-d3">
@@ -1322,8 +1377,8 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
             </div>
             <div class="contact-detail-content">
-              <h4>Reservas</h4>
-              <p>Llámanos para reservar tu mesa</p>
+              <h4 data-i18n="contact.phone.label">Reservas</h4>
+              <p data-i18n="contact.phone.value">Llámanos para reservar tu mesa</p>
             </div>
           </div>
           <div class="contact-detail reveal reveal-d4">
@@ -1331,7 +1386,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
             </div>
             <div class="contact-detail-content">
-              <h4>Síguenos</h4>
+              <h4 data-i18n="contact.social.label">Síguenos</h4>
               <p>
                 <a href="https://www.facebook.com/LaMarSalaArenales/" target="_blank" rel="noopener" style="color:var(--sea); text-decoration:none;">Facebook: La Mar Salá Arenales</a>
               </p>
@@ -1341,31 +1396,31 @@
 
         <div class="hours-table reveal">
           <div class="hours-row">
-            <span class="hours-day">Lunes</span>
+            <span class="hours-day" data-i18n="hours.mon">Lunes</span>
             <span class="hours-time">13:00 – 23:00</span>
           </div>
           <div class="hours-row">
-            <span class="hours-day">Martes</span>
+            <span class="hours-day" data-i18n="hours.tue">Martes</span>
             <span class="hours-time">13:00 – 23:00</span>
           </div>
           <div class="hours-row">
-            <span class="hours-day">Miércoles</span>
+            <span class="hours-day" data-i18n="hours.wed">Miércoles</span>
             <span class="hours-time">13:00 – 23:00</span>
           </div>
           <div class="hours-row">
-            <span class="hours-day">Jueves</span>
+            <span class="hours-day" data-i18n="hours.thu">Jueves</span>
             <span class="hours-time">13:00 – 23:00</span>
           </div>
           <div class="hours-row">
-            <span class="hours-day">Viernes</span>
+            <span class="hours-day" data-i18n="hours.fri">Viernes</span>
             <span class="hours-time">13:00 – 00:00</span>
           </div>
           <div class="hours-row">
-            <span class="hours-day">Sábado</span>
+            <span class="hours-day" data-i18n="hours.sat">Sábado</span>
             <span class="hours-time">12:00 – 00:00</span>
           </div>
           <div class="hours-row">
-            <span class="hours-day">Domingo</span>
+            <span class="hours-day" data-i18n="hours.sun">Domingo</span>
             <span class="hours-time">12:00 – 22:00</span>
           </div>
         </div>
@@ -1392,7 +1447,7 @@
       <div class="footer-logo">
         <img src="img/logo.png" alt="La Mar Salá">
       </div>
-      <p class="footer-about">Restaurante mediterráneo en primera línea de playa en Los Arenales del Sol. Arroces, mariscos y el mejor producto de temporada con vistas al mar.</p>
+      <p class="footer-about" data-i18n="footer.about">Restaurante mediterráneo en primera línea de playa en Los Arenales del Sol. Arroces, mariscos y el mejor producto de temporada con vistas al mar.</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/LaMarSalaArenales/" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -1403,69 +1458,319 @@
       </div>
     </div>
     <div>
-      <p class="footer-heading">Menú</p>
+      <p class="footer-heading" data-i18n="footer.menu">Menú</p>
       <ul class="footer-links">
-        <li><a href="#carta" onclick="switchTab('entrantes')">Entrantes</a></li>
-        <li><a href="#carta" onclick="switchTab('arroces')">Arroces</a></li>
-        <li><a href="#carta" onclick="switchTab('principales')">Principales</a></li>
-        <li><a href="#carta" onclick="switchTab('postres')">Postres</a></li>
+        <li><a href="#carta" onclick="switchTab('entrantes')" data-i18n="menu.tab.entrantes">Entrantes</a></li>
+        <li><a href="#carta" onclick="switchTab('arroces')" data-i18n="menu.tab.arroces">Arroces</a></li>
+        <li><a href="#carta" onclick="switchTab('principales')" data-i18n="menu.tab.principales">Principales</a></li>
+        <li><a href="#carta" onclick="switchTab('postres')" data-i18n="menu.tab.postres">Postres</a></li>
       </ul>
     </div>
     <div>
-      <p class="footer-heading">Contacto</p>
+      <p class="footer-heading" data-i18n="footer.contact">Contacto</p>
       <ul class="footer-links">
-        <li><a href="#contacto">Cómo llegar</a></li>
-        <li><a href="#contacto">Horarios</a></li>
+        <li><a href="#contacto" data-i18n="footer.link.howto">Cómo llegar</a></li>
+        <li><a href="#contacto" data-i18n="footer.link.hours">Horarios</a></li>
         <li><a href="https://www.facebook.com/LaMarSalaArenales/" target="_blank" rel="noopener">Facebook</a></li>
         <li><a href="https://www.tripadvisor.es/Restaurant_Review-g8844182-d28087145-Reviews-La_Mar_Sala-Los_Arenales_del_Sol_Costa_Blanca_Province_of_Alicante_Valencian_Co.html" target="_blank" rel="noopener">TripAdvisor</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 La Mar Salá · Los Arenales del Sol, Alicante</p>
+    <p data-i18n="footer.copy">© 2026 La Mar Salá · Los Arenales del Sol, Alicante</p>
     <div class="footer-bottom-gold"></div>
-    <p>Cocina mediterránea en primera línea de playa</p>
+    <p data-i18n="footer.tagline">Cocina mediterránea en primera línea de playa</p>
   </div>
 </footer>
 
 <script>
+  var translations = {
+    es: {
+      'nav.nosotros': 'Nosotros',
+      'nav.carta': 'Carta',
+      'nav.galeria': 'Galería',
+      'nav.contacto': 'Contacto',
+      'nav.reservar': 'Reservar',
+      'nav.reservar.mobile': 'Reservar mesa',
+      'hero.tagline': 'Cocina mediterránea al borde del mar',
+      'hero.btn': 'Explorar la carta',
+      'hero.scroll': 'Descubrir',
+      'strip.1': 'Cocina mediterránea auténtica',
+      'strip.2': 'Primera línea de playa',
+      'strip.3': 'Abierto todos los días',
+      'strip.4': 'Excelente relación calidad-precio',
+      'about.label': 'Nuestra historia',
+      'about.title': 'Donde el <em>mar</em><br>llega a tu mesa',
+      'about.p1': 'En La Mar Salá, el Mediterráneo no es solo el paisaje que te rodea — es el protagonista de cada plato. Situados en primera línea de playa en Los Arenales del Sol, elaboramos una cocina mediterránea honesta, con producto fresco de temporada y una carta que celebra los sabores del mar y la tierra alicantina.',
+      'about.p2': 'Desde nuestros arroces melosos hasta las tapas de siempre, cada receta lleva el cariño de una cocina de proximidad, con ingredientes seleccionados y el ambiente inconfundible de comer junto al mar.',
+      'about.pill1': 'Producto fresco',
+      'about.pill2': 'Cocina mediterránea',
+      'about.pill3': 'Primera línea de playa',
+      'about.pill4': 'Ambiente familiar',
+      'spec.label': 'Lo que nos define',
+      'spec.title': 'Nuestras especialidades',
+      'spec.1.title': 'Mariscos y Pescados',
+      'spec.1.desc': 'Del mar a la mesa en cuestión de horas. Mejillones, sepia, gambas y el pescado del día preparados con la sencillez que el buen producto merece.',
+      'spec.2.title': 'Arroces Mediterráneos',
+      'spec.2.desc': 'El alma de la cocina levantina. Arroces caldosos, melosos y a banda elaborados con el caldo de siempre, lentos y con todo el sabor del Mediterráneo.',
+      'spec.3.title': 'Tapas y Carnes',
+      'spec.3.desc': 'Para quienes prefieren picar y compartir. Tapas caseras, carnes a la brasa y guarniciones que acompañan cualquier plan, ya sea cena romántica o celebración en grupo.',
+      'menu.label': 'Lo mejor de la casa',
+      'menu.title': 'Nuestra <em>carta</em>',
+      'menu.tab.entrantes': 'Entrantes',
+      'menu.tab.arroces': 'Arroces',
+      'menu.tab.principales': 'Principales',
+      'menu.tab.postres': 'Postres',
+      'menu.e1.name': 'Mejillones al vapor',
+      'menu.e1.desc': 'Con limón fresco, raciones generosas',
+      'menu.e2.name': 'Gambas al ajillo',
+      'menu.e2.desc': 'Gambas del Mediterráneo, aceite, ajo y guindilla',
+      'menu.e3.name': 'Sepia a la plancha',
+      'menu.e3.desc': 'Con alioli casero y patatas fritas',
+      'menu.e4.name': 'Croquetas caseras',
+      'menu.e4.desc': 'De jamón ibérico o bacalao (6 uds.)',
+      'menu.e5.name': 'Ensalada de la casa',
+      'menu.e5.desc': 'Tomate, lechuga, cebolla, aceitunas y atún',
+      'menu.e6.name': 'Pulpo a la brasa',
+      'menu.e6.desc': 'Con pimentón de la Vera y aceite de oliva virgen',
+      'menu.a1.name': 'Arroz a banda',
+      'menu.a1.desc': 'El clásico alicantino, con alioli y pescado aparte',
+      'menu.a2.name': 'Arroz con bogavante',
+      'menu.a2.desc': 'Caldoso, con bogavante entero (mín. 2 personas)',
+      'menu.a3.name': 'Arroz negro',
+      'menu.a3.desc': 'Con sepia y gambas, alioli tradicional',
+      'menu.a4.name': 'Arroz del senyoret',
+      'menu.a4.desc': 'Mariscos pelados, para comer sin complicaciones',
+      'menu.a5.name': 'Arroz meloso de verduras',
+      'menu.a5.desc': 'Temporada, con aceite de trufa',
+      'menu.a6.name': 'Paella valenciana',
+      'menu.a6.desc': 'Pollo, conejo y judía verde (mín. 2 personas)',
+      'menu.p1.name': 'Dorada a la sal',
+      'menu.p1.desc': 'Entera, al horno tradicional, con verduras de temporada',
+      'menu.p2.name': 'Lubina a la brasa',
+      'menu.p2.desc': 'Con guarnición de patata y ensalada',
+      'menu.p3.name': 'Entrecot a la brasa',
+      'menu.p3.desc': '300g de ternera, con patatas fritas y pimientos',
+      'menu.p4.name': 'Bacalao al pil-pil',
+      'menu.p4.desc': 'Al estilo tradicional, con tomate confitado',
+      'menu.p5.name': 'Chuletas de cordero',
+      'menu.p5.desc': 'A la brasa, con romesco y verduras asadas',
+      'menu.p6.name': 'Solomillo al Pedro Ximénez',
+      'menu.p6.desc': 'Con reducción de vino dulce y patata rústica',
+      'menu.d1.name': 'Tarta de queso artesana',
+      'menu.d1.desc': 'Con coulis de frutos rojos',
+      'menu.d2.name': 'Crema catalana',
+      'menu.d2.desc': 'Receta tradicional, caramelizada al momento',
+      'menu.d3.name': 'Helado artesano',
+      'menu.d3.desc': '3 bolas a elegir, con galleta y nata',
+      'menu.d4.name': 'Coulant de chocolate',
+      'menu.d4.desc': 'Con helado de vainilla y salsa de caramelo',
+      'gallery.label': 'El ambiente',
+      'gallery.title': 'Imágenes del <em style="color:var(--gold-lt)">restaurante</em>',
+      'gallery.fb': 'Ver más en Facebook',
+      'exp.label': 'La experiencia',
+      'exp.title': 'Más que una <em>comida</em>',
+      'exp.body': 'Comer en La Mar Salá es vivir la auténtica experiencia mediterránea. El rumor de las olas, la brisa del mar, el olor a salitre y una cocina que lo resume todo: producto, sabor y el placer de estar en el mejor sitio posible.',
+      'exp.f1.title': 'Terraza con vistas al mar',
+      'exp.f1.desc': 'Come con el Mediterráneo como telón de fondo. Mesas en primera línea de playa para los días de buen tiempo.',
+      'exp.f2.title': 'Cocina de mercado',
+      'exp.f2.desc': 'Carta viva que varía con la temporada. Lo que llega fresco esta mañana está en el plato esta tarde.',
+      'exp.f3.title': 'Trato cercano y familiar',
+      'exp.f3.desc': 'Un equipo amable que te atiende como en casa. Porque la hospitalidad también es parte del sabor.',
+      'contact.label': 'Encuéntranos',
+      'contact.title': 'Reserva tu <em>mesa</em>',
+      'contact.body': 'Ven a disfrutar del mar, del sol y de la mejor cocina mediterránea de los Arenales. Te esperamos con los brazos abiertos — y la paella lista.',
+      'contact.address.label': 'Dirección',
+      'contact.address.value': 'Avenida San Bartolomé de Tirajana 1<br>03295 Los Arenales del Sol, Alicante',
+      'contact.phone.label': 'Reservas',
+      'contact.phone.value': 'Llámanos para reservar tu mesa',
+      'contact.social.label': 'Síguenos',
+      'hours.mon': 'Lunes',
+      'hours.tue': 'Martes',
+      'hours.wed': 'Miércoles',
+      'hours.thu': 'Jueves',
+      'hours.fri': 'Viernes',
+      'hours.sat': 'Sábado',
+      'hours.sun': 'Domingo',
+      'footer.about': 'Restaurante mediterráneo en primera línea de playa en Los Arenales del Sol. Arroces, mariscos y el mejor producto de temporada con vistas al mar.',
+      'footer.menu': 'Menú',
+      'footer.contact': 'Contacto',
+      'footer.link.howto': 'Cómo llegar',
+      'footer.link.hours': 'Horarios',
+      'footer.copy': '© 2026 La Mar Salá · Los Arenales del Sol, Alicante',
+      'footer.tagline': 'Cocina mediterránea en primera línea de playa',
+      'meta.title': 'La Mar Salá · Restaurante en Los Arenales del Sol',
+      'meta.desc': 'Restaurante La Mar Salá en Los Arenales del Sol. Cocina mediterránea al borde del mar — arroces, mariscos, tapas y carnes con vistas al Mediterráneo.'
+    },
+    en: {
+      'nav.nosotros': 'About',
+      'nav.carta': 'Menu',
+      'nav.galeria': 'Gallery',
+      'nav.contacto': 'Contact',
+      'nav.reservar': 'Book',
+      'nav.reservar.mobile': 'Book a table',
+      'hero.tagline': 'Mediterranean cuisine by the sea',
+      'hero.btn': 'Explore the menu',
+      'hero.scroll': 'Discover',
+      'strip.1': 'Authentic Mediterranean cuisine',
+      'strip.2': 'Beachfront location',
+      'strip.3': 'Open every day',
+      'strip.4': 'Excellent value for money',
+      'about.label': 'Our story',
+      'about.title': 'Where the <em>sea</em><br>reaches your table',
+      'about.p1': 'At La Mar Salá, the Mediterranean isn\'t just the scenery around you — it\'s the star of every dish. Located right on the beachfront in Los Arenales del Sol, we craft honest Mediterranean cuisine with fresh seasonal produce and a menu that celebrates the flavours of the sea and the Alicante land.',
+      'about.p2': 'From our creamy rice dishes to timeless tapas, every recipe carries the warmth of local cooking, with carefully selected ingredients and the unmistakable feeling of dining by the sea.',
+      'about.pill1': 'Fresh produce',
+      'about.pill2': 'Mediterranean cuisine',
+      'about.pill3': 'Beachfront',
+      'about.pill4': 'Family atmosphere',
+      'spec.label': 'What defines us',
+      'spec.title': 'Our specialties',
+      'spec.1.title': 'Seafood & Fish',
+      'spec.1.desc': 'From sea to table in a matter of hours. Mussels, cuttlefish, prawns and the catch of the day, prepared with the simplicity that great produce deserves.',
+      'spec.2.title': 'Mediterranean Rice',
+      'spec.2.desc': 'The soul of Levantine cuisine. Brothy, creamy and a banda rice dishes, slow-cooked with traditional stock and all the flavour of the Mediterranean.',
+      'spec.3.title': 'Tapas & Meats',
+      'spec.3.desc': 'For those who love to share. Homemade tapas, grilled meats and sides that suit any occasion, from a romantic dinner to a group celebration.',
+      'menu.label': 'The best of the house',
+      'menu.title': 'Our <em>menu</em>',
+      'menu.tab.entrantes': 'Starters',
+      'menu.tab.arroces': 'Rice dishes',
+      'menu.tab.principales': 'Mains',
+      'menu.tab.postres': 'Desserts',
+      'menu.e1.name': 'Steamed mussels',
+      'menu.e1.desc': 'With fresh lemon, generous portions',
+      'menu.e2.name': 'Garlic prawns',
+      'menu.e2.desc': 'Mediterranean prawns, olive oil, garlic and chilli',
+      'menu.e3.name': 'Grilled cuttlefish',
+      'menu.e3.desc': 'With homemade alioli and fried potatoes',
+      'menu.e4.name': 'Homemade croquettes',
+      'menu.e4.desc': 'Iberian ham or cod (6 pcs.)',
+      'menu.e5.name': 'House salad',
+      'menu.e5.desc': 'Tomato, lettuce, onion, olives and tuna',
+      'menu.e6.name': 'Grilled octopus',
+      'menu.e6.desc': 'With La Vera paprika and extra virgin olive oil',
+      'menu.a1.name': 'Arroz a banda',
+      'menu.a1.desc': 'The Alicante classic, with alioli and fish on the side',
+      'menu.a2.name': 'Lobster rice',
+      'menu.a2.desc': 'Brothy, with whole lobster (min. 2 people)',
+      'menu.a3.name': 'Black rice',
+      'menu.a3.desc': 'With cuttlefish and prawns, traditional alioli',
+      'menu.a4.name': 'Arroz del senyoret',
+      'menu.a4.desc': 'Peeled seafood, for easy eating',
+      'menu.a5.name': 'Creamy vegetable rice',
+      'menu.a5.desc': 'Seasonal, with truffle oil',
+      'menu.a6.name': 'Valencian paella',
+      'menu.a6.desc': 'Chicken, rabbit and green beans (min. 2 people)',
+      'menu.p1.name': 'Salt-baked sea bream',
+      'menu.p1.desc': 'Whole, oven-roasted, with seasonal vegetables',
+      'menu.p2.name': 'Grilled sea bass',
+      'menu.p2.desc': 'With potato and salad garnish',
+      'menu.p3.name': 'Grilled rib-eye steak',
+      'menu.p3.desc': '300g beef, with fries and peppers',
+      'menu.p4.name': 'Cod al pil-pil',
+      'menu.p4.desc': 'Traditional style, with confit tomato',
+      'menu.p5.name': 'Lamb chops',
+      'menu.p5.desc': 'Grilled, with romesco and roasted vegetables',
+      'menu.p6.name': 'Sirloin with Pedro Ximénez',
+      'menu.p6.desc': 'With sweet wine reduction and rustic potatoes',
+      'menu.d1.name': 'Artisan cheesecake',
+      'menu.d1.desc': 'With red berry coulis',
+      'menu.d2.name': 'Crema catalana',
+      'menu.d2.desc': 'Traditional recipe, caramelized to order',
+      'menu.d3.name': 'Artisan ice cream',
+      'menu.d3.desc': '3 scoops of your choice, with wafer and cream',
+      'menu.d4.name': 'Chocolate fondant',
+      'menu.d4.desc': 'With vanilla ice cream and caramel sauce',
+      'gallery.label': 'The atmosphere',
+      'gallery.title': 'Images of the <em style="color:var(--gold-lt)">restaurant</em>',
+      'gallery.fb': 'See more on Facebook',
+      'exp.label': 'The experience',
+      'exp.title': 'More than a <em>meal</em>',
+      'exp.body': 'Dining at La Mar Salá is living the authentic Mediterranean experience. The sound of the waves, the sea breeze, the smell of salt and a cuisine that sums it all up: produce, flavour and the pleasure of being in the best spot possible.',
+      'exp.f1.title': 'Terrace with sea views',
+      'exp.f1.desc': 'Dine with the Mediterranean as your backdrop. Beachfront tables for the sunny days.',
+      'exp.f2.title': 'Market-fresh cuisine',
+      'exp.f2.desc': 'A living menu that changes with the seasons. What arrives fresh this morning is on the plate this afternoon.',
+      'exp.f3.title': 'Warm, family-style service',
+      'exp.f3.desc': 'A friendly team that welcomes you like family. Because hospitality is part of the flavour.',
+      'contact.label': 'Find us',
+      'contact.title': 'Book your <em>table</em>',
+      'contact.body': 'Come and enjoy the sea, the sun and the best Mediterranean cuisine in Arenales. We\'re waiting with open arms — and the paella ready.',
+      'contact.address.label': 'Address',
+      'contact.address.value': 'Avenida San Bartolomé de Tirajana 1<br>03295 Los Arenales del Sol, Alicante',
+      'contact.phone.label': 'Reservations',
+      'contact.phone.value': 'Call us to book your table',
+      'contact.social.label': 'Follow us',
+      'hours.mon': 'Monday',
+      'hours.tue': 'Tuesday',
+      'hours.wed': 'Wednesday',
+      'hours.thu': 'Thursday',
+      'hours.fri': 'Friday',
+      'hours.sat': 'Saturday',
+      'hours.sun': 'Sunday',
+      'footer.about': 'Beachfront Mediterranean restaurant in Los Arenales del Sol. Rice dishes, seafood and the best seasonal produce with sea views.',
+      'footer.menu': 'Menu',
+      'footer.contact': 'Contact',
+      'footer.link.howto': 'How to get here',
+      'footer.link.hours': 'Opening hours',
+      'footer.copy': '© 2026 La Mar Salá · Los Arenales del Sol, Alicante',
+      'footer.tagline': 'Beachfront Mediterranean cuisine',
+      'meta.title': 'La Mar Salá · Restaurant in Los Arenales del Sol',
+      'meta.desc': 'La Mar Salá restaurant in Los Arenales del Sol. Mediterranean cuisine by the sea — rice dishes, seafood, tapas and meats with Mediterranean views.'
+    }
+  };
+
+  var currentLang = (function() {
+    var stored = localStorage.getItem('lamarsala-lang');
+    if (stored === 'es' || stored === 'en') return stored;
+    return navigator.language.toLowerCase().startsWith('es') ? 'es' : 'en';
+  })();
+
+  function setLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lamarsala-lang', lang);
+    document.documentElement.lang = lang;
+    document.title = translations[lang]['meta.title'];
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.content = translations[lang]['meta.desc'];
+    document.querySelectorAll('.lang-toggle button').forEach(function(btn) {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.dataset.i18n;
+      if (translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+  }
+
   // Hero load animation
-  requestAnimationFrame(() => {
-    setTimeout(() => {
+  requestAnimationFrame(function() {
+    setTimeout(function() {
       document.querySelector('.hero').classList.add('loaded');
     }, 80);
   });
 
   // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  var revealEls = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.12 });
-  revealEls.forEach(el => observer.observe(el));
+  revealEls.forEach(function(el) { observer.observe(el); });
 
   // Menu tabs
   function switchTab(tab) {
-    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.menu-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
     document.getElementById('tab-' + tab).classList.add('active');
-    document.querySelectorAll('.tab-btn').forEach(b => {
-      if (b.textContent.toLowerCase().includes(tab === 'principales' ? 'principal' : tab === 'arroces' ? 'arroz' : tab)) {
-        b.classList.add('active');
-      }
-    });
+    document.querySelectorAll('.tab-btn[data-tab="' + tab + '"]').forEach(function(b) { b.classList.add('active'); });
   }
-  // Fix tab button active matching
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
 
   // Mobile nav
   function toggleMobileNav() {
@@ -1474,6 +1779,9 @@
   function closeMobileNav() {
     document.getElementById('mobileNav').classList.remove('open');
   }
+
+  // Apply initial language
+  setLang(currentLang);
 </script>
 </body>
 </html>
