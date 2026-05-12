@@ -465,8 +465,7 @@
     padding: 24px 28px;
   }
   .spec-card-icon {
-    font-size: 24px;
-    margin-bottom: 12px;
+    display: none;
   }
   .spec-card-title {
     font-family: 'Cormorant Garamond', serif;
@@ -650,15 +649,12 @@
     align-items: flex-start;
   }
   .exp-feature-icon {
-    width: 44px;
-    height: 44px;
+    width: 8px;
+    height: 8px;
     background: var(--navy);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 50%;
     flex-shrink: 0;
-    font-size: 18px;
+    margin-top: 8px;
   }
   .exp-feature-text h4 {
     font-family: 'Cormorant Garamond', serif;
@@ -943,7 +939,7 @@
     <li><a href="#carta" data-i18n="nav.carta">Carta</a></li>
     <li><a href="#galeria" data-i18n="nav.galeria">Galería</a></li>
     <li><a href="#contacto" data-i18n="nav.contacto">Contacto</a></li>
-    <li><a href="#contacto" class="nav-cta" data-i18n="nav.reservar">Reservar</a></li>
+    <li><a href="tel:+34698414407" class="nav-cta" data-i18n="nav.reservar">Reservar</a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-toggle">
@@ -961,7 +957,7 @@
   <a href="#carta" onclick="closeMobileNav()" data-i18n="nav.carta">Carta</a>
   <a href="#galeria" onclick="closeMobileNav()" data-i18n="nav.galeria">Galería</a>
   <a href="#contacto" onclick="closeMobileNav()" data-i18n="nav.contacto">Contacto</a>
-  <a href="#contacto" onclick="closeMobileNav()" style="color:var(--gold-lt);" data-i18n="nav.reservar.mobile">Reservar mesa</a>
+  <a href="tel:+34698414407" onclick="closeMobileNav()" style="color:var(--gold-lt);" data-i18n="nav.reservar.mobile">Reservar mesa</a>
   <div class="lang-toggle-mobile">
     <div class="lang-toggle">
       <button data-lang="es" class="active" onclick="setLang('es')">ES</button>
@@ -1047,7 +1043,7 @@
           <img src="img/mejillones.webp" alt="Mariscos y Pescados">
         </div>
         <div class="spec-card-body">
-          <div class="spec-card-icon">🦪</div>
+          <div class="spec-card-icon"></div>
           <h3 class="spec-card-title" data-i18n="spec.1.title">Mariscos y Pescados</h3>
           <p class="spec-card-desc" data-i18n="spec.1.desc">Del mar a la mesa en cuestión de horas. Mejillones, sepia, gambas y el pescado del día preparados con la sencillez que el buen producto merece.</p>
         </div>
@@ -1057,7 +1053,7 @@
           <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/74/9f/bc/caption.jpg?w=1200&h=-1&s=1" alt="Arroces">
         </div>
         <div class="spec-card-body">
-          <div class="spec-card-icon">🥘</div>
+          <div class="spec-card-icon"></div>
           <h3 class="spec-card-title" data-i18n="spec.2.title">Arroces Mediterráneos</h3>
           <p class="spec-card-desc" data-i18n="spec.2.desc">El alma de la cocina levantina. Arroces caldosos, melosos y a banda elaborados con el caldo de siempre, lentos y con todo el sabor del Mediterráneo.</p>
         </div>
@@ -1067,7 +1063,7 @@
           <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/74/9f/bb/caption.jpg?w=1200&h=-1&s=1" alt="Tapas y Carnes">
         </div>
         <div class="spec-card-body">
-          <div class="spec-card-icon">🍢</div>
+          <div class="spec-card-icon"></div>
           <h3 class="spec-card-title" data-i18n="spec.3.title">Tapas y Carnes</h3>
           <p class="spec-card-desc" data-i18n="spec.3.desc">Para quienes prefieren picar y compartir. Tapas caseras, carnes a la brasa y guarniciones que acompañan cualquier plan, ya sea cena romántica o celebración en grupo.</p>
         </div>
@@ -1327,21 +1323,21 @@
         <p class="section-body reveal reveal-d2" data-i18n="exp.body">Comer en La Mar Salá es vivir la auténtica experiencia mediterránea. El rumor de las olas, la brisa del mar, el olor a salitre y una cocina que lo resume todo: producto, sabor y el placer de estar en el mejor sitio posible.</p>
         <div class="exp-features">
           <div class="exp-feature reveal reveal-d2">
-            <div class="exp-feature-icon">🌊</div>
+            <div class="exp-feature-icon"></div>
             <div class="exp-feature-text">
               <h4 data-i18n="exp.f1.title">Terraza con vistas al mar</h4>
               <p data-i18n="exp.f1.desc">Come con el Mediterráneo como telón de fondo. Mesas en primera línea de playa para los días de buen tiempo.</p>
             </div>
           </div>
           <div class="exp-feature reveal reveal-d3">
-            <div class="exp-feature-icon">👨‍🍳</div>
+            <div class="exp-feature-icon"></div>
             <div class="exp-feature-text">
               <h4 data-i18n="exp.f2.title">Cocina de mercado</h4>
               <p data-i18n="exp.f2.desc">Carta viva que varía con la temporada. Lo que llega fresco esta mañana está en el plato esta tarde.</p>
             </div>
           </div>
           <div class="exp-feature reveal reveal-d4">
-            <div class="exp-feature-icon">🤝</div>
+            <div class="exp-feature-icon"></div>
             <div class="exp-feature-text">
               <h4 data-i18n="exp.f3.title">Trato cercano y familiar</h4>
               <p data-i18n="exp.f3.desc">Un equipo amable que te atiende como en casa. Porque la hospitalidad también es parte del sabor.</p>
@@ -1378,7 +1374,7 @@
             </div>
             <div class="contact-detail-content">
               <h4 data-i18n="contact.phone.label">Reservas</h4>
-              <p data-i18n="contact.phone.value">Llámanos para reservar tu mesa</p>
+              <p><a href="tel:+34698414407" style="color:var(--navy); text-decoration:none;">698 41 44 07</a></p>
             </div>
           </div>
           <div class="contact-detail reveal reveal-d4">
@@ -1583,7 +1579,6 @@
       'contact.address.label': 'Dirección',
       'contact.address.value': 'Avenida San Bartolomé de Tirajana 1<br>03295 Los Arenales del Sol, Alicante',
       'contact.phone.label': 'Reservas',
-      'contact.phone.value': 'Llámanos para reservar tu mesa',
       'contact.social.label': 'Síguenos',
       'hours.mon': 'Lunes',
       'hours.tue': 'Martes',
@@ -1700,7 +1695,6 @@
       'contact.address.label': 'Address',
       'contact.address.value': 'Avenida San Bartolomé de Tirajana 1<br>03295 Los Arenales del Sol, Alicante',
       'contact.phone.label': 'Reservations',
-      'contact.phone.value': 'Call us to book your table',
       'contact.social.label': 'Follow us',
       'hours.mon': 'Monday',
       'hours.tue': 'Tuesday',
